@@ -1,0 +1,41 @@
+{
+  "name": "carousel",
+  "version": "1.0.0",
+  "main": "app.js",
+  "description": "A web application for searchers looking for suggestions.",
+  "scripts": {
+    "start": "node .",
+    "nodemon": "nodemon -V -i '**/dist/*' .",
+    "build": "run-s build:*",
+    "build:clean": "rm -rf public/dist && mkdir -p public/dist",
+    "build:js":
+      "concat -o public/dist/bundle.js public/components/*.js public/main.js",
+    "build:css":
+      "concat -o public/dist/styles.css public/css/*.css public/css/**/*.css",
+    "build:html": "concat -o public/dist/index.html public/index.html",
+    "watch": "run-p watch:* nodemon",
+    "watch:js":
+      "onchange 'public/main.js' 'public/components/*.js' -e 'public/dist/*' -- npm run build:js",
+    "watch:css":
+      "onchange 'public/css/*.css' 'public/css/**/*.css' -e 'public/dist/*' -- npm run build:css",
+    "watch:html":
+      "onchange 'public/index.html' -e public/dist/* -e 'public/dist/*' -- npm run build:html"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ronperris/carousel/"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "concat": "^1.0.3",
+    "nodemon": "^1.12.1",
+    "npm-run-all": "^4.1.1",
+    "onchange": "^3.2.1"
+  },
+  "dependencies": {
+    "express": "^4.16.2",
+    "mongodb": "^2.2.33"
+  }
+}
