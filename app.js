@@ -6,7 +6,7 @@ app.get('/words', (req, res) => {
   res.send([
     { text: 'Tomato' },
     { text: 'Tomato Soup' },
-    { text: 'Tomatos are considered harmful' }
+    { text: 'Tomatoes are considered harmful' }
   ])
 })
 
