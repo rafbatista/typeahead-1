@@ -1,5 +1,5 @@
 {
-  "name": "carousel",
+  "name": "typeahead",
   "version": "1.0.0",
   "main": "app.js",
   "description": "A web application for searchers looking for suggestions.",
