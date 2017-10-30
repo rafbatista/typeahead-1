@@ -1,10 +1,17 @@
-const suggestions = matches => {
+const suggestions = (matches, term) => {
   const $suggestions = document.createElement('div')
 
   $suggestions.append(
-    ...matches.map(match => {
+    ...matches.map(({ text: match }) => {
       const $match = document.createElement('div')
-      $match.textContent = match.text
+      const $term = document.createElement('span')
+      const $suggested = document.createElement('span')
+      $suggested.classList.add('suggested')
+
+      $term.textContent = term
+      $suggested.textContent = match.slice(term.length)
+
+      $match.append($term, $suggested)
       return $match
     })
   )
@@ -15,12 +22,12 @@ const suggestions = matches => {
 const listen = words => {
   $input = document.querySelector('[name=term]')
 
-  $input.addEventListener('keyup', ({ target: { value } }) => {
+  $input.addEventListener('keyup', ({ target: { value: term } }) => {
     $suggestions = document.querySelector('#suggestions')
     $suggestions.innerHTML = ''
-    if (value) {
+    if (term) {
       $suggestions.appendChild(
-        suggestions(words.filter(({ text }) => text.startsWith(value)))
+        suggestions(words.filter(({ text }) => text.startsWith(term)), term)
       )
     }
   })
