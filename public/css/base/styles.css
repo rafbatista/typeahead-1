@@ -1,0 +1,10 @@
+#suggestions {
+  position: absolute;
+  top: 110%;
+  left: 0;
+  font-size: 2rem;
+}
+
+.suggested {
+  color: #999;
+}

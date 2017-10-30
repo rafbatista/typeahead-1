@@ -13,7 +13,7 @@
     "build:css":
       "concat -o public/dist/styles.css public/css/*.css public/css/**/*.css",
     "build:html": "concat -o public/dist/index.html public/index.html",
-    "watch": "run-p watch:* nodemon",
+    "watch": "run-p build:* watch:* nodemon",
     "watch:js":
       "onchange 'public/main.js' 'public/components/*.js' -e 'public/dist/*' -- npm run build:js",
     "watch:css":

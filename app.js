@@ -10,6 +10,6 @@ app.get('/words', (req, res) => {
   ])
 })
 
-app.use(express.static('./public'))
+app.use(express.static('./public/dist'))
 
 app.listen(3000)
